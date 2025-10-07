@@ -1,0 +1,12 @@
+body { background-color: #A0A0FA;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    
+}
+
+h1, h2, h3 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+ol, ul {color: #505050;}
+
+table, tr, th, td{ border: 2px red solid;}

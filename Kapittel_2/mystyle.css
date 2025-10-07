@@ -1,12 +1,31 @@
-body { background-color: #A0A0FA;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+body { background-color: #A0A0FA; 
+    font-family: Georgia, 'Times New Roman', Times, serif; 
     
 }
 
-h1, h2, h3 {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+h1, h2, h3 { /* Styrer utseende på overskrifttypene h1, h2 og h3    */
+    font-family: /*Verdana, Geneva, Tahoma, sans-serif,*/ serif;
 }
 
 ol, ul {color: #505050;}
 
-table, tr, th, td{ border: 2px red solid;}
+table, tr, th, td{ border: 2px red dotted;}
+
+.cl_span_tag {          color: darkred;}
+
+.cl_span_atrib {        color: red;}
+
+.cl_span_atrib_verdi {  color: blue; 
+                        text-decoration: underline ;}
+
+.cl_p_width {width: 500px;
+            border: 1px solid black;
+            padding:10px 20px;
+            margin: 30px /*auto*/}
+
+.cl_span_navn { font-weight: bold; 
+                width: 100px;
+                margin: 10px;
+            display:inline-block;
+            border: solid 1px black;
+        }
