@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Animasjoner</title>
+  <style>
+    *, *::before, *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    /* Området for animasjoner */
+    #animation-area {
+      width: 98vw;
+      height: calc(98vh - 6px) ;
+      margin: auto;
+      margin-top: 10px;
+      background-color: #BABABA; /* mørk bakgrunn */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-family: Arial, sans-serif;
+      /*border: 1px solid black;*/
+    }
+    #img_car {width: 200px;
+        position: absolute;
+        bottom: -10px;
+        left: calc(100vw - 220px);
+    }
+  </style>
+</head>
+<body>
+  <div id="animation-area">
+    
+    <hr style="width: 100%;">
+    <img src="image/car.png" id="img_car">
+  </div>
+</body>
+</html>

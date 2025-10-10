@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8">
+
+  <title>CSS Animasjoner</title>
+  <link rel="stylesheet" href="mystyle.css">
+  <style>    
+    html, body{
+      scrollbar-width: none;
+    }
+    body {
+      background: linear-gradient(to bottom,
+        #FFD700 0%,
+        #FF6E00 40%,
+        #FF2A00 70%,
+        #081236 100%);
+        ;
+      height: 100vh;
+      text-align: center;
+    }
+    #img_car {
+        width: 800px;
+        height: 210px;
+        position: absolute;
+        bottom: 20px;
+        left: 120vw;
+        animation: drive-left 5s infinite linear;
+    }
+    @keyframes drive-left {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-200vw); /* flytt langt mot venstre */
+      }
+    }
+  </style>
+</head>
+<body>   
+  <h1>DeLorean DMC-12</h1>
+  <img src="image/car2_1.png" id="img_car">
+</body>
+</html>

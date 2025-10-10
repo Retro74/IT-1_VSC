@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inline-block vs Flexbox – demonstrasjon</title>
+  <style>
+    :root {
+      --gap: 12px;
+      --card-min: 220px;
+      --brand: #0a7; /* grønn */
+      --ink: #222;
+      --muted: #666;
+      --bg: #f6f8fa;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.4;
+    }
+
+    header {
+      padding: 24px 16px;
+      background: white;
+      border-bottom: 1px solid #e6e6e6;
+    }
+    header h1 { margin: 0 0 4px 0; font-size: 22px; }
+    header p { margin: 0; color: var(--muted); }
+
+    main { padding: 16px; display: grid; gap: 24px; }
+
+    section {
+      background: white;
+      border: 1px solid #e6e6e6;
+      border-radius: 10px;
+      padding: 16px;
+    }
+    section h2 { margin-top: 0; }
+    .demo {
+      border: 1px dashed #cfd8dc;
+      border-radius: 8px;
+      padding: 12px;
+      margin-top: 12px;
+    }
+
+    /* ---------- Felles UI-elementer ---------- */
+    .toolbar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin: 8px 0 12px;
+    }
+    .toolbar button {
+      background: var(--brand);
+      color: #fff;
+      border: none;
+      padding: 8px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .toolbar .ghost {
+      background: #eef8f2;
+      color: #064;
+    }
+    .hint {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 6px;
+    }
+
+    .nav a {
+      background: #eef8f2;
+      color: #064;
+      padding: 6px 10px;
+      border-radius: 999px;
+      text-decoration: none;
+      border: 1px solid #cfe9dc;
+      white-space: nowrap;
+    }
+
+    .cards .card {
+      border: 1px solid #e3e7ea;
+      border-radius: 10px;
+      padding: 12px;
+      background: #fff;
+    }
+    .card h4 { margin: 0 0 6px; }
+    .badge { font-size: 12px; color: #064; background: #e8faf0; padding: 2px 8px; border-radius: 999px; border: 1px solid #cfe9dc; }
+
+    /* ---------- A) INLINE-BLOCK-variant ---------- */
+    .inline .nav {
+      /* Inline-block bruker "text-align" for horisontal sentrering */
+      text-align: center;
+      /* NB: Ingen gap-støtte her */
+    }
+    .inline .nav a {
+      display: inline-block;
+      margin-right: 8px; /* manuell spacing, kan gi "hakk" på linjeskift */
+      vertical-align: middle; /* litt hjelp, men ikke ekte vertikal sentrering */
+    }
+    .inline .nav a:last-child { margin-right: 0; }
+
+    .inline .cards {
+      /* Ingen egentlig layoutmanager – vi "faker" grid med inline-block */
+      font-size: 16px; /* whitespace mellom kortene blir synlig som ekstra mellomrom */
+    }
+    .inline .card {
+      display: inline-block;
+      width: calc(33.333% - var(--gap));
+      margin: 0 calc(var(--gap) / 2) var(--gap);
+      vertical-align: top; /* Prøv å få toppen til å linje opp */
+      /* Ulempen: Ulike høyder når innholdet er ulikt */
+    }
+
+    /* ---------- B) FLEXBOX-variant ---------- */
+    .flex .nav {
+      display: flex;
+      flex-wrap: wrap;     /* bryt til ny linje ved behov */
+      gap: 8px;            /* ekte, jevnt mellomrom uten hacks */
+      align-items: center; /* vertikal sentrering av elementene */
+      justify-content: center; /* endres med knapp for å se effekt */
+    }
+
+    .flex .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--gap);      /* jevnt, konsistent mellomrom */
+    }
+    .flex .card {
+      /* fleksibel bredde: minst X, ellers del plass likt */
+      flex: 1 1 var(--card-min);
+      display: flex;
+      flex-direction: column; /* slik at "les mer" kan dyttes ned */
+    }
+    .flex .card .fill {
+      /* Tar opp ledig plass for å få "knappen" til bunn */
+      flex: 1;
+    }
+    .flex .card.prior {
+      /* Med order kan vi endre rekkefølge uten å endre HTML */
+      order: -1;
+      outline: 2px solid var(--brand);
+    }
+
+    /* Responsivt: stable seksjoner under hverandre på små skjermer */
+    @media (min-width: 980px) {
+      main { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Inline-block vs Flexbox – praktisk sammenlikning</h1>
+    <p>Observer forskjeller i sentrering, wrapping, mellomrom, rekkefølge og like høyder.</p>
+  </header>
+
+  <main>
+    <!-- A) INLINE-BLOCK -->
+    <section class="inline">
+      <h2>A) Navigasjon og kort med <code>display: inline-block</code></h2>
+      <div class="demo">
+        <nav class="nav">
+          <!-- Whitespace mellom lenkene i HTML gir små mellomrom + vi bruker margin manuelt -->
+          #Hjem</a>
+          #Produkter</a>
+          #Kurs</a>
+          #Support</a>
+          #Om oss</a>
+        </nav>
+        <p class="hint">🔎 Legg merke til at mellomrom styres med <code>margin</code> og whitespace. Vertikal sentrering og jevnt "gap" er ikke innebygd.</p>
+      </div>
+
+      <div class="demo cards">
+        <article class="card">
+          <h4>Modul 1 <span class="badge">kort tekst</span></h4>
+          <p>Et lite avsnitt.</p>
+          <aes mer</a>
+        </article>
+
+        <article class="card">
+          <h4>Modul 2 <span class="badge">lengre innhold</span></h4>
+          <p>Denne har litt mer tekst for å demonstrere at høydene blir ulike når vi bruker inline-block og elementene ikke strekker seg likt i høyden.</p>
+          #Les mer</a>
+        </article>
+
+        <article class="card">
+          <h4>Modul 3</h4>
+          <p>Kort tekst.</p>
+          <Les mer</a>
+        </article>
+      </div>
+      <p class="hint">⚠️ Ulik høyde på kortene kan gi "hakkete" rader ved inline-block. Å få helt jevnt mellomrom (gap) krever manuelle marginer og spesialtriks for whitespace.</p>
+    </section>
+
+    <!-- B) FLEXBOX -->
+    <section class="flex">
+      <h2>B) Navigasjon og kort med <code>display: flex</code></h2>
+
+      <div class="toolbar">
+        <button id="cycle-justify">Endre fordeling (justify-content)</button>
+        <span class="hint">Prøv: start → center → space-between → space-around → space-evenly</span>
+      </div>
+
+      <div class="demo">
+        <nav class="nav" id="flexNav">
+          #Hjem</a>
+          #Produkter</a>
+          #Kurs</a>
+          #Support</a>
+          #Om oss</a>
+        </nav>
+        <p class="hint">✅ Ekte vertikal sentrering (<code>align-items</code>) og jevnt mellomrom (<code>gap</code>). Lett å endre fordelingen med <code>justify-content</code>.</p>
+      </div>
+
+      <div class="toolbar">
+        <button id="toggle-order">Prioriter kort #3 (order = -1)</button>
+        <button id="toggle-wrap" class="ghost">Toggle wrap (på/av)</button>
+      </div>
+
+      <div class="demo cards" id="flexCards">
+        <article class="card">
+          <h4>Modul 1 <span class="badge">kort tekst</span></h4>
+          <p>Et lite avsnitt.</p>
+          <div class="fill"></div>
+          #Les mer</a>
+        </article>
+
+        <article class="card">
+          <h4>Modul 2 <span class="badge">lengre innhold</span></h4>
+          <p>Denne har litt mer tekst for å demonstrere at høydene blir <em>jevnet ut</em> i Flexbox-raden når vi lar kortene strekke seg med <code>flex</code>.</p>
+          <div class="fill"></div>
+          #Les mer</a>
+        </article>
+
+        <article class="card" id="card3">
+          <h4>Modul 3</h4>
+          <p>Kort tekst.</p>
+          <div class="fill"></div>
+          <Les mer</a>
+        </article>
+      </div>
+
+      <p class="hint">✅ Jevnt <code>gap</code>, kontrollerbar rekkefølge, like høyder og enkel responsiv oppførsel med <code>flex-wrap</code> og <code>flex</code>-verdier.</p>
+    </section>
+  </main>
+
+  <script>
+    // Interaktivt for å "se" fordelene med Flexbox
+    (function () {
+      const nav = document.getElementById('flexNav');
+      const justifies = ['flex-start', 'center', 'space-between', 'space-around', 'space-evenly'];
+      let i = 0;
+      document.getElementById('cycle-justify').addEventListener('click', () => {
+        i = (i + 1) % justifies.length;
+        nav.style.justifyContent = justifies[i];
+      });
+
+      const card3 = document.getElementById('card3');
+      document.getElementById('toggle-order').addEventListener('click', () => {
+        card3.classList.toggle('prior'); // order: -1 via CSS-klasse
+      });
+
+      const cards = document.getElementById('flexCards');
+      let wrapped = true;
+      document.getElementById('toggle-wrap').addEventListener('click', () => {
+        wrapped = !wrapped;
+        cards.style.flexWrap = wrapped ? 'wrap' : 'nowrap';
+      });
+    })();
+  </script>
+</body>
+</html>

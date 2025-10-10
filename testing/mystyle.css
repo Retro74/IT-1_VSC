@@ -10,3 +10,16 @@ h1, h2, h3 {
 ol, ul {color: #505050;}
 
 table, tr, th, td{ border: 2px red solid;}
+
+
+ul li {
+    color: darkblue;
+    font-weight: bold;
+    list-style-type: square;
+    /*list-style-type: disc;
+    list-style-type: circle;
+    list-style-type: upper-alpha;
+    list-style-type: none;*/
+
+
+}
