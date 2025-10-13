@@ -33,3 +33,39 @@ table, tr, th, td{ border: 2px red dotted;}
                 /*text-align: center*/;
                 ;
         }
+
+#id_h1_hovedsideoverskrift {
+    color: brown;
+}
+
+
+ul ul li {
+    color :aqua;
+}
+ol ul li { color: red}
+
+ol li:first-child {font-weight: bold;}
+ol ol li:first-child {font-weight:normal ;}
+
+h1::first-letter {font-size: 250%;}
+
+/* Styling av semantiske tager. Se filen demo_semantiske_tags.html */
+header, nav, main, section, article, aside, footer {
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid #cccccc;
+    margin: 8px;
+}
+
+header {    background: #f0f8ff;}
+nav {       background: #e6f7ff;}
+main {      background: #ffffff;}
+section {   background: #f9f9f9;}
+article {   background: #fdfdfd;}
+aside {     background: #fffbe6;}
+footer {    background: #f0f0f0; 
+            text-align: center;}
+
+nav a {     color: #0077cc;
+            text-decoration: none;
+            margin-right: 10px;}
