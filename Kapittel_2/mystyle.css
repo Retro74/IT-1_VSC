@@ -38,7 +38,7 @@ table, tr, th, td{ border: 2px red dotted;}
     color: brown;
 }
 
-
+/*###### Kombinerte selctorer #####*/
 ul ul li {
     color :aqua;
 }
@@ -49,6 +49,9 @@ ol ol li:first-child {font-weight:normal ;}
 
 h1::first-letter {font-size: 250%;}
 
+/*###### /Kombinerte selctorer - Slutt #####*/
+
+/* #######################################*/
 /* Styling av semantiske tager. Se filen demo_semantiske_tags.html */
 header, nav, main, section, article, aside, footer {
     border-radius: 8px;
@@ -69,3 +72,5 @@ footer {    background: #f0f0f0;
 nav a {     color: #0077cc;
             text-decoration: none;
             margin-right: 10px;}
+
+/* ###############  / Sematiske tagger - slutt ###################*/
