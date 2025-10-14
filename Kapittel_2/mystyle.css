@@ -62,10 +62,18 @@ header, nav, main, section, article, aside, footer {
 
 header {    background: #f0f8ff;}
 nav {       background: #e6f7ff;}
-main {      background: #ffffff;}
-section {   background: #f9f9f9;}
+main {      background: #ffffff;
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+}
+section {   background: #f9f9f9;
+            flex:3}
+
 article {   background: #fdfdfd;}
-aside {     background: #fffbe6;}
+aside {     background: #fffbe6;
+            flex: 1;}
+
 footer {    background: #f0f0f0; 
             text-align: center;}
 

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="no">
+    <head>
+    <title>
+        Demo av Semantiske tagger
+    </title>
+    <meta charset="utf-8">
+    <style>
+        #grid-container {
+            display: grid;
+            grid-template-areas: 
+            "header header"
+            "nav nav"
+            "main aside"
+            "footer footer";
+        grid-template-columns: 3fr 1fr;
+        }
+        header, nav, main, section, article, aside, footer {
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid #cccccc;
+    margin: 8px;
+}
+
+header {    background: #f0f8ff;
+            grid-area: header;}
+nav {       background: #e6f7ff;
+            grid-area: nav;}
+main {      background: #ffffff;
+            grid-area: main;}
+section {   background: #f9f9f9;
+            grid-area: section;}
+article {   background: #fdfdfd;
+            grid-area: article;}
+aside {     background: #fffbe6;
+            grid-area: aside;}
+footer {    background: #f0f0f0; 
+            text-align: center;
+            grid-area: footer;}
+nav a {     color: #0077cc;
+            text-decoration: none;
+            margin-right: 10px;}
+
+@media(max-width:768px) {
+    #grid-container{
+        grid-template-areas: 
+        "header"
+        "nav"
+        "main"
+        "aside"
+        "footer";
+    
+        grid-template-columns: 1fr;}
+}
+    </style>
+    </head>
+    <body>
+        <div id="grid-container">
+        <header>
+            <h1>Semantiske tager</h1>
+            <p>Dette er et eksempel på en webside med semantiske tagger</p>
+        </header>
+        <nav>
+           <a href="" target="_blank">#Hjem</a>
+           <a href="" target="_blank">#Om oss</a> 
+           <a href="" target="_blank">#Kontakt oss</a>
+           <a href="" target="_blank">#Våre produkter</a>
+           <a href="" target="_blank">#Login</a>
+        </nav>
+        <main>
+            <section>
+                <h2>Nyheter</h2>
+                <article>
+                    <h3>Overskrift artikkel 1</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro rerum fugiat quaerat hic, maiores quia earum pariatur, ab voluptatum at dolore velit tempora eos? Ullam placeat consequuntur ut sapiente et.</p>
+                    <h3>Overskrift artikkel 2</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro rerum fugiat quaerat hic, maiores quia earum pariatur, ab voluptatum at dolore velit tempora eos? Ullam placeat consequuntur ut sapiente et.</p>
+                    <h3>Overskrift artikkel 3</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro rerum fugiat quaerat hic, maiores quia earum pariatur, ab voluptatum at dolore velit tempora eos? Ullam placeat consequuntur ut sapiente et.</p>
+                </article>
+            </section>
+        </main>
+        <aside>
+            <h4>Relaterte lenker</h4>
+        </aside>
+
+        <footer>
+            <p>
+                &copy; Roger S. Mikalsen - Nesodden VGS - 2025 <br>
+                <a href="index.html">Tilbake</a>
+            </p>
+        </footer>
+    </div>
+    </body>
+</html>

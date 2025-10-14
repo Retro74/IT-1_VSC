@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="no">
+    <head>
+    <title>
+        Demo av Position og animation
+    </title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="mystyle.css">
+    <style>
+        html { scrollbar-width: none;}
+
+        body {background: linear-gradient(to bottom,
+            #FFD700 10%,
+            #FF6E00 35%,
+            #FF2A00 65%,
+            #081236 90%);
+            height: 100vh;
+            text-align: center;
+
+        }
+        #id_img_delorean {
+            width: 800px;
+            position: absolute;
+            bottom: 20px;
+            left: 120vw;
+            animation: drive_left 5s infinite linear;
+        }
+
+        @keyframes drive_left {
+            0% { transform: translateX(0);}
+            100% {transform: translateX(calc(-120vw - 800px));}
+        }
+    </style>
+
+    </head>
+    <body>
+        <h1>DeLorean DMC-12</h1>
+        <img src="images/delorean.png" id="id_img_delorean">        
+
+
+        
+
+    </body>
+</html>
