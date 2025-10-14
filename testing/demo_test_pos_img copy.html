@@ -2,19 +2,20 @@
 <html lang="no">
 <head>
   <meta charset="utf-8">
-
   <title>CSS Animasjoner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <link rel="stylesheet" href="mystyle.css">
   <style>    
-    html, body{
+    html{
       scrollbar-width: none;
     }
     body {
-      background: linear-gradient(to bottom,
-        #FFD700 0%,
-        #FF6E00 40%,
-        #FF2A00 70%,
-        #081236 100%);
+      background: linear-gradient(45deg,
+        #FFD700 10%,
+        #FF6E00 20%,
+        #FF2A00 60%,
+        #081236 90%);
         ;
       height: 100vh;
       text-align: center;
@@ -32,7 +33,7 @@
         transform: translateX(0);
       }
       100% {
-        transform: translateX(-200vw); /* flytt langt mot venstre */
+        transform: translateX(calc(-120vw - 800px )); /* flytt langt mot venstre */
       }
     }
   </style>

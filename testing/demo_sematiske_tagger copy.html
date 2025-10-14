@@ -16,13 +16,19 @@
       border: 1px solid #ccc;
       border-radius: 8px;
     }
-    header { background: #f0f8ff; }
-    nav { background: #e6f7ff; }
-    main { background: #fff; 
-    }
-    section { background: #f9f9f9; }
+    header {  background: #f0f8ff; }
+    nav {     background: #e6f7ff; }
+    main {    background: #fff; 
+              display: flex;
+              flex-direction: row;
+              gap: 15px;
+        }
+
+    section { background: #f9f9f9;
+              flex: 3;}
     article { background: #fdfdfd; }
-    aside { background: #fffbe6; }
+    aside { background: #fffbe6; 
+            flex: 1;}
     footer { background: #f0f0f0; text-align: center; }
     nav a {
       margin-right: 12px;
@@ -43,7 +49,7 @@
   </nav>
   <main>
     <section>
-      <h2>Nyheter</h2>
+      <h2>Nyhet-section</h2>
       <article>
         <h3>Artikkel 1</h3>
         <p>Dette er en nyhetsartikkel som står for seg selv. Den kunne vært delt på sosiale medier.</p>

@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <title>Semantisk Grid Layout</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      line-height: 1.6;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-areas:
+        "header header"
+        "nav nav"
+        "main aside"
+        "footer footer";
+      grid-template-columns: 3fr 1fr;
+    }
+    header, nav, main, section, article, aside, footer {
+      padding: 8px;
+      margin: 8px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    header {
+      grid-area: header;
+      background-color: #e0f7fa;
+      padding: 10px;
+    }
+    nav {
+      grid-area: nav;
+      background-color: #e0f7fa;
+      padding: 10px;
+    }
+    main {
+      grid-area: main;
+      background-color: #ffffff;
+      padding: 10px;
+    }
+    aside {
+      grid-area: aside;
+      background-color: #f1f8e9;
+      padding: 10px;
+    }
+    footer {
+      grid-area: footer;
+      background-color: #eeeeee;
+      text-align: center;
+      padding: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .grid-container {
+        grid-template-areas:
+          "header"
+          "main"
+          "aside"
+          "footer";
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-container">
+    <header>
+      <h1>Semantisk Grid Layout</h1>
+      <p>Dette er et eksempel på bruk av semantiske HTML-elementer.</p>
+    </header>
+    <nav>
+    #Hjem</a>
+    #Om oss</a>
+    #Kontakt</a>
+    </nav>
+  
+    <main>
+      <h2>Nyhet-section</h2>
+      <article>
+        <h2>Nyhetsartikkel 1</h2>
+        <p>Dette er en nyhetsartikkel som står for seg selv. Den kunne vært delt på sosiale medier.</p>
+      </article>
+      <article>
+        <h2>Nyhetsartikkel 2</h2>
+        <p>Enda en artikkel med relevant innhold. Semantiske tagger gjør siden mer tilgjengelig.</p>
+      </article>
+    </main>
+    <aside>
+      <h3>Relatert informasjon</h3>
+      <ul>
+        <li><a href="#">Lenke 1</a></li>
+        <li><a href="#">Lenke 2</a></li>
+        <li><a href="#">Lenke 3</a></li>
+      </ul>
+    </aside>
+    <footer>
+      <p>© 2025 Min Semantiske Side</p>
+    </footer>
+  </div>
+</body>
+</html>
