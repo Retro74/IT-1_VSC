@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <title>Canvas Demo</title>
+  <style>
+    canvas {
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h1>Canvas Demo</h1>
+  <p>Dette er en sirkel tegnet med Canvas og JavaScript.</p>
+  <canvas id="myCanvas" width="200" height="200"></canvas>
+
+  <script>
+    const canvas = document.getElementById('myCanvas');
+    const ctx = canvas.getContext('2d');
+    ctx.beginPath();
+    ctx.arc(100, 100, 50, 0, 2 * Math.PI);
+    ctx.fillStyle = 'lightgreen';
+    ctx.fill();
+    ctx.strokeStyle = 'darkgreen';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+  </script>
+</body>
+</html>

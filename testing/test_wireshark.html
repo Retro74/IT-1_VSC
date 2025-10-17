@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wireshark-lab for TEK – HTTP og TCP (ENG UI, med bilder fra nettet)</title>
+  <style>
+    :root { --ink:#0a0a0a; --muted:#555; --link:#0b66d0; --bg:#fff; --accent:#0c7; }
+    html, body { margin:0; padding:0; background:var(--bg); color:var(--ink);
+      font:16px/1.5 system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+    header { padding:2rem 1rem; background:#f3f6fb; border-bottom:1px solid #e2e8f0; }
+    header h1 { margin:0 0 .5rem 0; font-size:1.8rem; }
+    header p { margin:0; color:var(--muted); }
+    main { max-width:980px; margin:0 auto; padding:2rem 1rem; }
+    section { margin:2.5rem 0; }
+    h2 { margin-top:0; font-size:1.6rem; }
+    h3 { margin-top:1.2rem; font-size:1.1rem; color:var(--muted); }
+    ol, ul { padding-left:1.2rem; }
+    figure { margin:1rem 0; padding:.75rem; border:1px solid #e6e6e6; background:#fafafa; }
+    figcaption { font-size:.9rem; color:var(--muted); margin-top:.5rem; }
+    img { max-width:100%; height:auto; display:block; background:#fff; }
+    .rubric { border-left:4px solid var(--accent); padding-left:.75rem; margin:.75rem 0; }
+    .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      background:#f0f0f0; padding:.05rem .35rem; border-radius:.25rem; }
+    details { background:#fbfbfb; border:1px dashed #d9d9d9; padding:.75rem; }
+    footer { margin-top:3rem; padding:1rem; color:var(--muted); border-top:1px solid #eee; font-size:.9rem; }
+    @media print {
+      header { background:none; border:none; }
+      a[href^="http"]:after { content:" (" attr(href) ")"; font-size:.8em; color:#666; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Wireshark-lab for TEK – HTTP og TCP</h1>
+  <p>Tre praksisøvelser (ENG UI) med bilder fra nettet. Fasit nederst på siden.</p>
+</header>
+
+<main>
+  <section id="intro">
+    <p>Denne siden er laget for Teknologiforståelse (TEK). Elevene skal bruke <strong>Wireshark</strong> til å analysere HTTP-over-TCP. Bildene er hentet fra åpne kilder på nett (engelsk grensesnitt) og viser hva elevene skal se etter.</p>
+  </section>
+
+  <section id="ex1">
+    <h2>Øvelse 1 – Grunnleggende HTTP GET (enkel)</h2>
+    <p><strong>Mål:</strong> Finne og tolke en HTTP <span class="kbd">GET</span>-forespørsel og sentrale headere i Wireshark.</p>
+    <h3>Instruksjoner</h3>
+    <ol>
+      <li>Start Wireshark, velg riktig nettverksgrensesnitt.</li>
+      <li>Sett display-filter: <span class="kbd">http</span>.</li>
+      <li>Åpne en nettleser og gå til <span class="kbd">http://example.com</span> (HTTP, ikke HTTPS).</li>
+      <li>Finn en <span class="kbd">GET</span>-pakke. Utvid <em>Hypertext Transfer Protocol</em> i <em>Packet Details</em>.</li>
+      <li>Noter: (a) klient- og server-IP, (b) metode og URI, (c) <span class="kbd">Host</span>, (d) <span class="kbd">User-Agent</span>.</li>
+    </ol>
+
+    <figure>
+      https://commons.wikimedia.org/wiki/Special:FilePath/Wireshark_3.0.3_screenshot.png
+      <figcaption>
+        Figur 1 – Eksempel på Wireshark-vindu (engelsk UI). Kilde: Wikimedia Commons
+        (<a href="https://commons.wikimedia.org/wiki/File:Wireshark_3.0.3_screenshot.png">file page</a>).
+      </figcaption>
+    </figure>
+
+    <p><em>Les mer:</em> Praktiske tips for å filtrere og lese HTTP-headere i Wireshark hos NetworkProGuide
+      (<a href="https://networkproguide.com/wireshark-filter-http-traffic/">How to Filter HTTP Traffic in Wireshark</a>).
+    </p>
+  </section>
+
+  <section id="ex2">
+    <h2>Øvelse 2 – HTTP-headere og TCP-detaljer (medium)</h2>
+    <p><strong>Mål:</strong> Se hvordan HTTP ligger oppå TCP og identifisere TCP-felter.</p>
+    <h3>Instruksjoner</h3>
+    <ol>
+      <li>Bruk samme opptak som i øvelse 1.</li>
+      <li>Klikk en HTTP-pakke og utvid <em>Transmission Control Protocol</em>.</li>
+      <li>Noter: (a) kilde- og destinasjonsport, (b) flagg (<span class="kbd">ACK</span>/<span class="kbd">PSH</span> osv.), (c) <em>Sequence</em>/<em>Ack</em>-numre, (d) <em>Window size</em>.</li>
+    </ol>
+
+    <figure>
+      https://commons.wikimedia.org/wiki/Special:FilePath/Wireshark_-_TCP.png
+      <figcaption>
+        Figur 2 – TCP-detaljer i Wireshark (porter, flagg m.m.). Kilde: Wikimedia Commons
+        (<a href="https://commons.wikimedia.org/wiki/File:Wireshark_-_TCP.png">file page</a>).
+      </figcaption>
+    </figure>
+
+    <p><em>Les mer:</em> Trinn-for-trinn om TCP-analyse i Wireshark (treveis håndtrykk, flagg, osv.) hos GeeksforGeeks
+      (<a href="https://www.geeksforgeeks.org/ethical-hacking/tcp-analysis-using-wireshark/">TCP Analysis using Wireshark</a>).
+    </p>
+  </section>
+
+  <section id="ex3">
+    <h2>Øvelse 3 – Follow → TCP Stream (utfordrende)</h2>
+    <p><strong>Mål:</strong> Følg en HTTP-samtale (request + response) slik applikasjonslaget ser den.</p>
+    <h3>Instruksjoner</h3>
+    <ol>
+      <li>Generér trafikk til en ren HTTP-side (f.eks. <span class="kbd">http://httpforever.com</span>).</li>
+      <li>Høyreklikk en HTTP-pakke → <em>Follow</em> → <em>TCP Stream</em>.</li>
+      <li>Identifiser i dialogen: full forespørsel (headere), statuslinje/kode, <span class="kbd">Content-Length</span>/<span class="kbd">Content-Type</span>, og språk fra <span class="kbd">Accept-Language</span>.</li>
+      <li>Skriv 3–4 setninger som forklarer hvordan TCP (pålitelige segmenter) og HTTP (applikasjonsprotokoll) samarbeider.</li>
+    </ol>
+
+    <figure>
+      https://commons.wikimedia.org/wiki/Special:FilePath/Seguir_flujo_TCP_Wireshark_ejemplo2.jpg
+      <figcaption>
+        Figur 3 – Eksempel på «Follow TCP Stream»-vindu i Wireshark (engelsk UI i dialogen kan variere). Kilde: Wikimedia Commons
+        (<a href="https://commons.wikimedia.org/wiki/File:Seguir_flujo_TCP_Wireshark_ejemplo2.jpg">file page</a>).
+      </figcaption>
+    </figure>
+
+    <p><em>Les mer:</em> Offisiell brukerveiledning om <em>Follow Stream</em> (inkl. HTTP/2) hos Wireshark
+      (<a href="https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowStreamSection.html">Following Protocol Streams</a>).
+    </p>
+  </section>
+
+  <section id="rubrics">
+    <h2>Vurderingskriterier (rubrics)</h2>
+    <div class="rubric">
+      <p><strong>Øvelse 1 (5 p):</strong> IP-adresser (2p), metode/ressurs (2p), Host (1p).</p>
+      <p><strong>Øvelse 2 (6 p):</strong> TCP-porter (2p), flagg (2p), User-Agent (1p), Accept-Encoding (1p).</p>
+      <p><strong>Øvelse 3 (10 p):</strong> Full forespørsel (3p), responskode/status (2p), Content-Length (2p), språkpreferanse (1p), forklaring TCP/HTTP (2p).</p>
+      <p><em>Total: 21 poeng.</em></p>
+    </div>
+  </section>
+
+  <section id="fasit">
+    <h2>Fasit</h2>
+    <details open>
+      <summary>Klikk for å vise/skjule fasit</summary>
+      <ul>
+        <li><strong>Øvelse 1:</strong> Klient = egen maskin; Server = example.com; Metode: GET; Ressurs: <span class="kbd">/</span>; Host: <span class="kbd">example.com</span>; User‑Agent: nettleserstreng.</li>
+        <li><strong>Øvelse 2:</strong> TCP‑porter: <em>src</em> = ephemeral (tilfeldig), <em>dst</em> = 80; Flagg: ofte <span class="kbd">ACK</span>/<span class="kbd">PSH</span> når data sendes; Seq/Ack øker med byte; Window = mottakerbuffer.</li>
+        <li><strong>Øvelse 3:</strong> Forespørsel starter med <span class="kbd">GET / HTTP/1.1</span> + Host, User‑Agent, Accept*; Respons typisk <span class="kbd">HTTP/1.1 200 OK</span> + Content‑Length/Type; Språk fra <span class="kbd">Accept‑Language</span>; Forklaring: HTTP (appl.) over TCP (pålitelige segmenter, rekkefølge og leveringssikring).</li>
+      </ul>
+    </details>
+  </section>
+
+  <section id="kilder">
+    <h2>Kilder og videre lesning</h2>
+    <ul>
+      <li>NetworkProGuide – <a href="https://networkproguide.com/wireshark-filter-http-traffic/">How to Filter HTTP Traffic in Wireshark</a>.</li>
+      <li>Wireshark User’s Guide – <a href="https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowStreamSection.html">Following Protocol Streams</a>.</li>
+      <li>GeeksforGeeks – <a href="https://www.geeksforgeeks.org/ethical-hacking/tcp-analysis-using-wireshark/">TCP Analysis using Wireshark</a>.</li>
+      <li>Wikimedia Commons – skjermbilder:
+        <a href="https://commons.wikimedia.org/wiki/File:Wireshark_3.0.3_screenshot.png">Wireshark 3.0.3 screenshot</a>,
+        <a href="https://commons.wikimedia.org/wiki/File:Wireshark_-_TCP.png">Wireshark - TCP</a>,
+        <a href="https://commons.wikimedia.org/wiki/File:Seguir_flujo_TCP_Wireshark_ejemplo2.jpg">Follow TCP Stream eksempel</a>.
+      </li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <p>© 2025 – Laget for undervisning (TEK). Bildene over vises direkte fra kildene på nett.
+     Sjekk lisensinformasjon på hver <em>file page</em> på Wikimedia Commons før videre bruk.</p>
+</footer>
+</body>
+</html>

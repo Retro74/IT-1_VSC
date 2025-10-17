@@ -2,7 +2,7 @@
 <html lang="no">
     <head>
     <title>
-        Demo av Semantiske tagger
+        Demo av Semantiske tagger med grid i css
     </title>
     <meta charset="utf-8">
     <style>
@@ -11,23 +11,20 @@
             grid-template-areas: 
             "header header"
             "nav nav"
-            "main aside"
+            "section aside"
             "footer footer";
         grid-template-columns: 3fr 1fr;
         }
-        header, nav, main, section, article, aside, footer {
+        header, nav, section, article, aside, footer {
     border-radius: 8px;
     padding: 16px;
     border: 1px solid #cccccc;
     margin: 8px;
 }
-
 header {    background: #f0f8ff;
             grid-area: header;}
 nav {       background: #e6f7ff;
             grid-area: nav;}
-main {      background: #ffffff;
-            grid-area: main;}
 section {   background: #f9f9f9;
             grid-area: section;}
 article {   background: #fdfdfd;
@@ -46,10 +43,9 @@ nav a {     color: #0077cc;
         grid-template-areas: 
         "header"
         "nav"
-        "main"
+        "section"
         "aside"
         "footer";
-    
         grid-template-columns: 1fr;}
 }
     </style>
@@ -67,7 +63,6 @@ nav a {     color: #0077cc;
            <a href="" target="_blank">#Våre produkter</a>
            <a href="" target="_blank">#Login</a>
         </nav>
-        <main>
             <section>
                 <h2>Nyheter</h2>
                 <article>
@@ -79,11 +74,9 @@ nav a {     color: #0077cc;
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro rerum fugiat quaerat hic, maiores quia earum pariatur, ab voluptatum at dolore velit tempora eos? Ullam placeat consequuntur ut sapiente et.</p>
                 </article>
             </section>
-        </main>
         <aside>
             <h4>Relaterte lenker</h4>
         </aside>
-
         <footer>
             <p>
                 &copy; Roger S. Mikalsen - Nesodden VGS - 2025 <br>

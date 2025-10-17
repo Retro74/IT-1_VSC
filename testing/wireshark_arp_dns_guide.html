@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Wireshark Guide – ARP-spoofing og DNS-tunneling</title>
+<style>
+  body { font-family: Arial, sans-serif; margin:0; padding:0; line-height:1.6; color:#222; }
+  header { background:#f3f6fb; padding:1.5rem; border-bottom:1px solid #ddd; }
+  header h1 { margin:0; font-size:1.8rem; }
+  main { max-width:960px; margin:0 auto; padding:1.5rem; }
+  section { margin-bottom:2rem; }
+  h2 { font-size:1.5rem; margin-top:0; }
+  h3 { font-size:1.2rem; color:#444; }
+  pre { background:#f8f8f8; padding:.75rem; border:1px solid #ddd; overflow-x:auto; }
+  figure { margin:1rem 0; border:1px solid #ccc; padding:.5rem; background:#fafafa; }
+  figcaption { font-size:.9rem; color:#555; margin-top:.5rem; }
+  img { max-width:100%; height:auto; display:block; }
+  @media print { a[href]:after { content:" (" attr(href) ")"; font-size:.8em; color:#666; } }
+</style>
+</head>
+<body>
+<header>
+<h1>Wireshark-guide: Oppdage ARP-spoofing og DNS-tunneling</h1>
+<p>Instruksjoner, filtre og tolkning med skjermbilder fra Wireshark.</p>
+</header>
+<main>
+<section>
+<h2>1. ARP-spoofing</h2>
+<h3>Capture filter</h3>
+<pre>arp</pre>
+<h3>Display filter</h3>
+<pre>arp.opcode == 2</pre>
+<p><strong>Hva se etter?</strong> Mange ARP-replies uten tilsvarende requests, eller samme IP med ulike MAC-adresser.</p>
+<figure>
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Wireshark_arp_example.png" alt="Wireshark ARP packets" />
+<figcaption>Figur 1 – ARP-pakker i Wireshark. Kilde: Wikimedia Commons.</figcaption>
+</figure>
+</section>
+
+<section>
+<h2>2. DNS-tunneling</h2>
+<h3>Capture filter</h3>
+<pre>port 53</pre>
+<h3>Display filter</h3>
+<pre>dns.qry.name.len > 50</pre>
+<p><strong>Hva se etter?</strong> Lange eller mange DNS-forespørsler til samme domene, TXT-records:</p>
+<pre>dns.qry.type == 16</pre>
+<figure>
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Wireshark_dns_query_example.png" alt="Wireshark DNS packets" />
+<figcaption>Figur 2 – DNS-forespørsler i Wireshark. Kilde: Wikimedia Commons.</figcaption>
+</figure>
+</section>
+
+<section>
+<h2>3. Tolkning av funn</h2>
+<ul>
+<li><strong>ARP-spoofing:</strong> Hvis du ser flere ARP-replies som binder samme IP til forskjellige MAC-adresser, er det et sterkt tegn på spoofing.</li>
+<li><strong>DNS-tunneling:</strong> Uvanlig lange DNS-navn, hyppige forespørsler med varierende subdomener, eller mange TXT-records kan indikere tunneling.</li>
+</ul>
+<figure>
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Wireshark_statistics_example.png" alt="Wireshark Statistics" />
+<figcaption>Figur 3 – Bruk Statistics → Conversations for å se mønstre. Kilde: Wikimedia Commons.</figcaption>
+</figure>
+</section>
+
+<section>
+<h2>Ekstra tips</h2>
+<ul>
+<li>Bruk <em>Coloring Rules</em> for å markere ARP og DNS-pakker med spesifikke kriterier.</li>
+<li>Sett opp ring buffer for langtidsopptak.</li>
+<li>Bruk <em>Expert Information</em> for å finne protokollfeil og advarsler.</li>
+</ul>
+</section>
+</main>
+<footer>
+<p>© 2025 – Laget for undervisning. Bilder fra Wikimedia Commons.</p>
+</footer>
+</body>
+</html>

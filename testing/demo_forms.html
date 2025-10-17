@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8" />
+  <title>IT1 – Demo av HTML Forms (uten JS/CSS)</title>
+</head>
+<body>
+  <h1>IT1 – Registreringsskjema (Form-kontroller i progresjon)</h1>
+  <p>Send inn for å se resultatet på echo-siden (POST-data vises der).</p>
+
+  <!-- Ingen JS/CSS. Kun HTML5-kontroller og innebygd validering -->
+  <form
+    action="https://www.w3schools.com/action_page.php"
+    method="post"
+       <fieldset>
+      <legend>1) Grunnleggende opplysninger</legend>
+
+      <label for="fornavn">Fornavn *</label><br />
+      <input type="text" id="fornavn" name="fornavn"
+             placeholder="Ola" autocomplete="given-name"
+             required autofocus /><br /><br />
+
+      <label for="etternavn">Etternavn *</label><br />
+      <input type="text" id="etternavn" name="etternavn"
+             placeholder="Nordmann" autocomplete="family-name"
+             required /><br /><br />
+
+      <label for="epost">E-post *</label><br />
+      <input type="email" id="epost" name="epost"
+             placeholder="ola@nordmann.no" autocomplete="email"
+             required /><br /><br />
+
+      <label for="brukernavn">Brukernavn</label><br />
+      <input type="text" id="brukernavn" name="brukernavn"
+             placeholder="ola.n" autocomplete="username"
+             pattern="[a-zA-Z0-9._-]{3,20}"
+             title="3–20 tegn: bokstaver, tall, punktum, bindestrek, understrek" /><br /><br />
+
+      <label for="passord">Passord *</label><br />
+      <input type="password" id="passord" name="passord"
+             autocomplete="new-password"
+             minlength="8" maxlength="64"
+             placeholder="Minst 8 tegn" required /><br /><br />
+
+      <label for="telefon">Telefon (8 siffer, norsk) *</label><br />
+      <input type="tel" id="telefon" name="telefon"
+             inputmode="numeric" pattern="\d{8}"
+             title="Skriv 8 siffer (norsk nummer)"
+             placeholder="41234567" required />
+    </fieldset>
+
+    <br />
+
+    <!-- 2) Radio (enkeltvalg) + Checkbokser (flervalg) -->
+    <fieldset>
+      <legend>2) Retning og kompetanse</legend>
+
+      <p><strong>IT-interesse (enkeltvalg) *</strong></p>
+      <label>
+        <input type="radio" name="it_interesse" value="programmering" required />
+        Programmering / utvikling
+      </label><br />
+      <label>
+        <input type="radio" name="it_interesse" value="it-drift" />
+        IT-drift / infrastruktur
+      </label><br />
+      <label>
+        <input type="radio" name="it_interesse" value="design-web" />
+        Design / web
+      </label><br /><br />
+
+      <p><strong>Kompetanse (flervalg)</strong></p>
+      <!-- Vanlig mønster for flervalg: samme navn med [] -> tolkes som liste på server -->
+      <label><input type="checkbox" id="kompetanse1" name="kompetanse1" value="HTML" /> HTML</label><br />
+      <label><input type="checkbox" id="kompetanse2" name="kompetanse2" value="CSS" /> CSS</label><br />
+      <label><input type="checkbox" id="kompetanse3" name="kompetanse3" value="JavaScript" /> JavaScript</label><br />
+      <label><input type="checkbox" id="kompetanse4" name="kompetanse4" value="Python" /> Python</label><br />
+      <label><input type="checkbox" id="kompetanse5" name="kompetanse5" value="Java" /> Java</label><br />
+      <label><input type="checkbox" id="kompetanse6" name="kompetanse6" value="SQL" /> Databaser (SQL)</label><br />
+      <label><input type="checkbox" id="kompetanse7" name="kompetanse7" value="Git" /> Git/GitHub</label><br />
+      <label><input type="checkbox" id="kompetanse8" name="kompetanse8" value="Linux" /> Linux</label><br />
+      <label><input type="checkbox" id="kompetanse9" name="kompetanse9" value="Nettverk" /> Nettverk</label>
+    </fieldset>
+
+    <br />
+
+    <!-- 3) Select (enkeltvalg + optgroup) og select multiple -->
+    <fieldset>
+      <legend>3) Valglister</legend>
+
+      <label for="niva">Selvvurdert nivå *</label><br />
+      <select id="niva" name="niva" required>
+        <option value="" disabled selected>Velg nivå</option>
+        <option value="nybegynner">Nybegynner</option>
+        <option value="middels">Middels</option>
+        <option value="viderekommen">Viderekommen</option>
+      </select><br /><br />
+
+      <label for="verktøy_multi">Foretrukne verktøy (flervalg med Ctrl/Cmd)</label><br />
+      <select id="verktøy_multi" name="verktøy_multi" multiple size="6">
+        <option>VS Code</option>
+        <option>IntelliJ IDEA</option>
+        <option>PyCharm</option>
+        <option>GitHub Desktop</option>
+        <option>Docker</option>
+        <option>Wireshark</option>
+        <option>Postman</option>
+        <option>Figma</option>
+      </select><br /><br />
+
+      <label for="os_valg">Operativsystem (optgroup)</label><br />
+      <select id="os_valg" name="os_valg">
+        <optgroup label="Desktop">
+          <option value="windows">Windows</option>
+          <option value="macos">macOS</option>
+        </optgroup>
+        <optgroup label="Linux">
+          <option value="ubuntu">Ubuntu</option>
+          <option value="fedora">Fedora</option>
+          <option value="debian">Debian</option>
+        </optgroup>
+      </select>
+    </fieldset>
+
+    <br />
+
+    <!-- 4) Tekstområde -->
+    <fieldset>
+      <legend>4) Tekstfelt (textarea)</legend>
+      <label for="om_deg">Kort om deg</label><br />
+      <textarea id="om_deg" name="om_deg" rows="5" cols="50"
+        placeholder="Skriv litt om erfaring, interesseområder og mål for IT1..."></textarea>
+    </fieldset>
+
+    <br />
+
+    <!-- 5) Dato og tid -->
+    <fieldset>
+      <legend>5) Dato og tid</legend>
+      <label for="oppstart_dato">Foretrukket dato for veiledning</label><br />
+      <input type="date" id="oppstart_dato" name="oppstart_dato" /><br /><br />
+
+      <label for="oppstart_tid">Klokkeslett</label><br />
+      <input type="time" id="oppstart_tid" name="oppstart_tid" /><br /><br />
+
+      <label for="oppstart_dt">Dato og tid (lokal)</label><br />
+      <input type="datetime-local" id="oppstart_dt" name="oppstart_dt" /><br /><br />
+
+      <label for="uke">Uke</label><br />
+      <input type="week" id="uke" name="uke" /><br /><br />
+
+      <label for="maaned">Måned</label><br />
+      <input type="month" id="maaned" name="maaned" />
+    </fieldset>
+
+    <br />
+
+    <!-- 6) Tall og skala (range + datalist) -->
+    <fieldset>
+      <legend>6) Tall og skala</legend>
+
+      <label for="alder">Alder</label><br />
+      <input type="number" id="alder" name="alder"
+             min="14" max="100" step="1" placeholder="16" /><br /><br />
+
+      <label for="motivasjon">Motivasjon for faget (0–10)</label><br />
+      <input type="range" id="motivasjon" name="motivasjon"
+             min="0" max="10" step="1" value="7" list="ticks_0_10" />
+      <datalist id="ticks_0_10">
+        <option value="0"></option>
+        <option value="2"></option>
+        <option value="4"></option>
+        <option value="6"></option>
+        <option value="8"></option>
+        <option value="10"></option>
+      </datalist>
+    </fieldset>
+
+    <br />
+
+    <!-- 7) Nett-relaterte felter -->
+    <fieldset>
+      <legend>7) Nett-relaterte</legend>
+
+      <label for="portfolio">Portfolio/URL</label><br />
+      <input type="url" id="portfolio" name="portfolio"
+             placeholder="https://mitt-prosjekt.no" /><br /><br />
+
+      <label for="sok">Søk (demo)</label><br />
+      <input type="search" id="sok" name="sok" placeholder="Søk..." />
+    </fieldset>
+
+    <br />
+
+    <!-- 8) Datalist (auto-forslag) -->
+    <fieldset>
+      <legend>8) Datalist (forslag mens du skriver)</legend>
+
+      <label for="favoritt_sprak">Favorittspråk</label><br />
+      <input type="text" id="favoritt_sprak" name="favoritt_sprak"
+             list="sprak_forslag" placeholder="Begynn å skrive..." />
+      <datalist id="sprak_forslag">
+        <option value="Python"></option>
+        <option value="JavaScript"></option>
+        <option value="Java"></option>
+        <option value="C#"></option>
+        <option value="C++"></option>
+        <option value="TypeScript"></option>
+        <option value="Go"></option>
+        <option value="Rust"></option>
+      </datalist>
+    </fieldset>
+
+    <br />
+
+    <!-- 9) Fargevelger og filopplasting -->
+    <fieldset>
+      <legend>9) Farge og vedlegg</legend>
+
+      <label for="tema_farge">Tema-farge</label><br />
+      <input type="color" id="tema_farge" name="tema_farge" value="#0b5fff" /><br /><br />
+
+      <label for="vedlegg">Last opp vedlegg (kode/prosjekt, flere tillatt)</label><br />
+      <input type="file" id="vedlegg" name="vedlegg"
+             accept=".zip,.pdf,.png,.jpg,.jpeg,.txt,.md,image/*"
+             multiple />
+    </fieldset>
+
+    <br />
+
+    <!-- 10) Skjulte/readonly/disabled -->
+    <fieldset>
+      <legend>10) Skjulte og skrivebeskyttede felt</legend>
+
+      <!-- Skjulte felt sendes inn men vises ikke -->
+      <input type="hidden" name="skjema_versjon" value="it1-v1.0" />
+      <input type="hidden" name="kurskode" value="IT1" />
+
+      <label for="elev_id">Elev-ID (readonly – sendes inn)</label><br />
+      <input type="text" id="elev_id" name="elev_id"
+             value="ELEV-0001" readonly /><br /><br />
+
+      <label for="internt">Internt notat (disabled – sendes IKKE inn)</label><br />
+      <input type="text" id="internt" name="internt_notat"
+             value="Vises i UI, men sendes ikke" disabled />
+    </fieldset>
+
+    <br />
+
+    <!-- 11) Samtykke og knapper -->
+    <fieldset>
+      <legend>11) Samtykke og innsending</legend>
+
+      <label>
+        <input type="checkbox" name="samtykke" value="ja" required />
+        Jeg samtykker til at opplysningene brukes i forbindelse med kurset *
+      </label>
+      <br /><br />
+
+      <button type="submit">Send inn</button>
+      <button type="reset">Tøm skjema</button>
+      <!-- Ekstra: send uten validering for å demonstrere formnovalidate -->
+      <button type="submit" formnovalidate>Send uten validering</button>
+    </fieldset>
+  </form>
+
+  <hr />
+  <!-- Tips: Legg eventuelt til target="_blank" på <form> for å åpne resultatet i ny fane -->
+</body>
+</html>
+``
