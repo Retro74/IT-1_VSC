@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="no">
+    <head>
+    <title>
+        Demo av Transition i CSS
+    </title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="mystyle.css">
+    <style>
+        #div_transform {
+            transition: all 2s;
+            transition-delay: 0.5s;
+            transition-timing-function: ease-in-out;
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: absolute;
+            top: 120px;
+            left: 200px;
+        }
+        #div_transform:hover {
+            width: 300px;
+            height: 400px;
+            background-color: green;
+            font-size: xx-large;
+            rotate: 90deg;
+            top: 200px;
+            left:300 px;
+        }
+    </style>
+    </head>
+    <body>
+        <h1>Transition</h1>
+        <div id="div_transform">Dette er en tekst</div>
+        
+        <hr>
+        <a href="index.html">Tilbake</a>
+
+    </body>
+</html>

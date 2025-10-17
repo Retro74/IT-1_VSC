@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="no">
+    <head>
+    <title>
+        Demo av form
+    </title>
+    </title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="mystyle.css">
+
+    </head>
+    <body>
+        <h1>Registeringsskjema</h1>
+
+        <form action="https://www.w3schools.com/action_page.php" method="post">
+            Fornavn: 
+            <input type="text" id="txt_fornavn" name="txt_fornavn" placeholder="Ola" required><br>
+            Etternavn: 
+            <input type="text" id="txt_etternavn" name="txt_etternavn" placeholder="Nordmann" required><br>
+            Gateadresse: 
+            <input type="text" id="txt_gateadresse" name="txt_gateadresse" placeholder="vei">
+            <input type="number" id="num_husnr" name="num_husnr" placeholder="nr" style="width: 40px;" min="1"><br>
+            Postnummer:
+            <input type="number" id="num_postnr" name="num_postnr" placeholder="postnr" style="width: 80px;" min="1000" max="9999"><br>
+            Poststed: <br>
+
+            Fylke: 
+            <select id="sel_fylke" name="sel_fylke">
+                <option value="Agder">Agder</option>
+                <option value="Akershus">Akershus</option>
+                <option value="Buskerud">Buskerud</option>
+                <option value="Finnmark">Finnmark</option>
+                <option value="Innlandet">Innlandet</option>
+                <option value="Møre og Romsdal">Møre og Romsdal</option>
+                <option value="Nordland">Nordland</option>
+                <option value="Oslo">Oslo</option>
+                <option value="Rogaland">Rogaland</option>
+                <option value="Telemark">Telemark</option>
+                <option value="Troms">Troms</option>
+                <option value="Trøndelag">Trøndelag</option>
+                <option value="Vestfold">Vestfold</option>
+                <option value="Vestland">Vestland</option>
+                <option value="Østfold">Østfold</option>
+            </select><br>
+            
+            Kjønn:  Jente  <input type="radio" id="rb_jente" value="jente" name="rb_kjonn"> 
+                    Gutt:  <input type="radio" id="rb_gutt" value="gutt" name="rb_kjonn"> 
+                    Annet: <input type="radio" id="rb_annet" value="annet" name="rb_kjonn"><br>
+            
+            e-post:
+            <input type="email" id="email" name="email"><br>
+            Brukernavn:
+            <input type="text" id="txt_brukernavn" name="txt_brukernavn" required pattern="[a-zA-Z0-9]{3,20}"><br>
+            Passord: 
+            <input type="password" id="pwd_passord" name="pwd_passord" minlength="8" maxlength="64" required><br>
+            Hobby:<br>
+            <input type="checkbox" id="chb_fotball" name="chb_fotball" value="fotball">Fotball<br>
+            <input type="checkbox" id="chb_handball" name="chb_handball" value="handball">Håndball<br>
+            <input type="checkbox" id="chb_svomming" name="chb_svomming" value="svomming">Svømming<br>
+            <input type="checkbox" id="chb_korps" name="chb_korps" value="korps">Korps<br>
+            Om meg selv: <br>
+            <textarea id="txtarea_om_meg_selv" name="txtarea_om_meg_selv" 
+                style="width:300px; height:200px"></textarea>
+
+            <br>
+            <input type="hidden" value="skjult verdi" id="hid_verdi" name="hid_verdi">
+            <button type="submit">Send inn</button>
+            <button type="reset">Reset</button>
+        </form>
+
+
+        
+        <hr>
+        <a href="index.html">Tilbake</a>
+
+    </body>
+</html>
