@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <title>Var vs Let</title>
+  <link href="demo_simple.css"  rel="stylesheet">
+
+</head>
+<body>
+  <h2>5 knapper med <span class="code">var</span> fra en <span class="code">for</span> sløyfe:</h2>
+  <div id="var-buttons"></div>
+
+  <h2>5 knapper med <span class="code">let</span> fra en <span class="code">for</span> sløyfe:</h2>
+  <div id="let-buttons"></div>
+
+  <script>
+    // Bruk av var
+    for (var i = 0; i < 5; i++) {
+      var btn = document.createElement("button");
+      btn.innerText = "Var knapp " + i;
+      btn.onclick = function() {
+        alert("Var i = " + i);
+      };
+      document.getElementById("var-buttons").appendChild(btn);
+    }
+
+    // Bruk av let
+    for (let j = 0; j < 5; j++) {
+      let btn = document.createElement("button");
+      btn.innerText = "Let knapp " + j;
+      btn.onclick = function() {
+        alert("Let j = " + j);
+      };
+      document.getElementById("let-buttons").appendChild(btn);
+    }
+  </script>
+  <pre><code><h2><span class="code">var</span> vs <span class="code">let</span></h2>
+    <b>var tall_1 = 4</b>
+    <b>var tall_1 = 7</b>  <span class="kommentar">//Prøver å definere variabelen en gang til. Det går bra.</span>
+    <b>tall_1</b>
+    <em>> 7</em>
+    <b>let tall_2 = 3</b>
+    <b>let tall_2 = 8</b>  <span class="kommentar">//Prøver å definere variabelen en gang til.</span>
+<div class="error-message">Uncaught SyntaxError: Identifier 'tall_2' has already been declared</div></code></pre>
+<p><h3>Konlusjon: Bruk <span class="code">let</span></h3></p>
+  <pre><code><h2>Konstanter</h2>
+    const DAGER_I_UKEN = 7
+    const NORGES_HOVEDSTAD = "Oslo"
+    console.log(NORGES_HOVEDSTAD)
+    <em>>Oslo</em>
+
+    NORGES_HOVEDSTAD = "Bergen"  <span class="kommentar">//Prøver å endre en konstant</span>
+    <div class="error-message">Uncaught TypeError: Assignment to constant variable.</div></code></pre>
+  <hr>
+  <a href="index.html">Tilbake</a>
+</body>
+</html>

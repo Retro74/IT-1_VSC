@@ -9,17 +9,24 @@
     <link rel="stylesheet" href="demo_simple.css">
     <script>
         var alder = 17
-        console.log("Alder en er nå " + alder)
+        console.log(`Alder en er nå ${alder}, alder er definert som ${typeof(alder)}`)
+
         alder = alder +1
-        console.log("Ett år senere er alderen " + alder)
+        console.log(`Ett år senere er alderen ${alder}, alder er nå definert som ${typeof(alder)}`)
+
         alder += 1
-        console.log("Ett år senere er alderen " + alder)
+        console.log(`Ett år senere er alderen ${alder}, alder er nå definert som ${typeof(alder)}`)
+        console.log(typeof(alder))
+
         alder ++
-        console.log("Ett år senere er alderen " + alder)
+        console.log(`Ett år senere er alderen ${alder}, alder er nå definert som ${typeof(alder)}`)
+
         alder += "1"
-        console.log("Legg til '1' år til, så er alderen " + alder)
+        console.log(`Legg til '1' år til, så er alderen ${alder}, alder er nå definert som ${typeof(alder)}`)
+
         alder += 5
-        console.log("Pluss på 5 år til, så er alderen " + alder)
+        console.log(`Pluss på 5 år til, så er alderen ${alder}, alder er nå definert som ${typeof(alder)}`)
+
         console.log("Konverter alder tilbake til et tall,")
         console.log("med å skrive alder = + alder")
         console.log("eller med å skrive alder = Number(alder)")
@@ -34,7 +41,44 @@
         <p class="demo-panel">
             Trykk F12 for å få frem konsollet
         </p>
+        <p>
+            <pre><code>
+<b>let alder = 17</b>
+console.log(`Alder en er nå ${alder}, alder er definert som ${typeof(alder)}`)
+<em>> Alder en er nå 17, alder er definert som number</em>
 
+<b>alder = alder +1</b>
+console.log(`Ett år senere er alderen ${alder}, alder er nå definert som ${typeof(alder)}`)
+<em>> Ett år senere er alderen 18, alder er nå definert som number</em>
+
+<b>alder += 1</b>
+console.log(`Ett år senere er alderen ${alder}, alder er nå definert som ${typeof(alder)}`)
+console.log(typeof(alder))
+<em>> Ett år senere er alderen 19, alder er nå definert som number</em>
+
+<b>alder ++</b>
+console.log(`Ett år senere er alderen ${alder}, alder er nå definert som ${typeof(alder)}`)
+<em>> Ett år senere er alderen 20, alder er nå definert som number</em>
+
+<b>alder += "1"</b>
+console.log(`Legg til '1' år til, så er alderen ${alder}, alder er nå definert som ${typeof(alder)}`)
+<em>> Legg til '1' år til, så er alderen 201, alder er nå definert som string</em>
+
+<b>alder += 5</b>
+console.log(`Pluss på 5 år til, så er alderen ${alder}, alder er nå definert som ${typeof(alder)}`)
+<>> Pluss på 5 år til, så er alderen 2015, alder er nå definert som string
+
+console.log("Konverter alder tilbake til et tall,")
+console.log("eller med å skrive alder = Number(alder)")
+console.log("med å skrive alder = + alder")
+console.log("eller du kan bruke minus på den alder -= 0")
+console.log("her i konsollet")
+<b>alder = Number(alder)</b>
+console.log(`Alderen er nå ${alder}, alder er nå definert som ${typeof(alder)}`)
+<em>> Alderen er nå 2015, alder er nå definert som number</em>
+
+            </code></pre>
+        </p>
 
         
         <hr>

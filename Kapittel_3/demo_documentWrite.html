@@ -8,25 +8,14 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="demo_simple.css">
     <style>
-        #css_logo {
-            border: 1px solid black;
-            width: 300px;
+        #id_div_css { 
+            background-image: url('images/CSS3_logo.png');
             height: 400px;
-            background-image: url("images/CSS3_logo.png");
+            width: 300px;
+            border: 1px solid black;
             background-size: cover;
             display: inline-block;
-            animation: flipY 4s linear infinite;
-            transform-style: preserve-3d;
         }
-
-        @keyframes flipY {
-        0% {
-            transform: rotateY(0deg);
-        }
-        100% {
-            transform: rotateY(360deg);
-        }
-    }
     </style>
     </head>
     <body>
@@ -34,20 +23,18 @@
         <script>
             document.write("<h3><em>Hei, fra JS.  Her er jeg</em></h3>")
         </script>
-        <p style="color: chocolate;">Så bra, da er vi sammen alle sammen HTML, CSS og JS!</p>
-<hr>
-        <img border="1" src="images/html5_logo.png" height="400" >
-        <div id="css_logo" ></div>
+        <p style="color: chocolate;">Så bra, da er vi sammen alle sammen HTML, CSS og JavaScript!</p>
+        <hr>
+        <img id="id_img_html5logo" src="images/html5_logo.png" height="400" border="1" onclick="alert('Hei fra JS!')">
+        <div id="id_div_css" onclick="alert('Hei fra JS!')"> </div>
         <script>
-            var hoyde = 400
-            var border = 1
-            var border_color= "black"
-            document.write(`<img 
-                            src="images/js_logo.png" 
-                            height=${hoyde} 
-                            style="border:${border}px solid ${border_color}">`)
+            let hoyde = 400
+            let border = 1
+            document.write(`<img    id="id_img_JSlogo" src="images/JS_logo.png" onclick="alert('Hei fra JS!')" 
+                                    style="border: ${border}px solid black;" 
+                                    height="${hoyde}"> `)
         </script>
-        
+
         <hr>
 
         <a href="index.html">Tilbake</a>
