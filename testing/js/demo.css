@@ -1,0 +1,529 @@
+/* ============================================================
+   DEMO.CSS – Stilark for JS-demonstrasjoner og undervisning
+   - Dus, behagelig bakgrunn
+   - Klare men milde overskriftsfarger (h1–h6)
+   - Gode standardselectorer
+   - Klasser for kodeblokker, konsoll-output og demo-paneler
+   - Tilgjengelige fokusstiler og dark mode via prefers-color-scheme
+   ============================================================ */
+
+/* --------------------------
+   0) Design tokens (CSS-variabler)
+   -------------------------- */
+:root {
+  /* Farger (lysmodus) – dus palett */
+  --bg:            #f7f8fb;   /* sidebakgrunn */
+  --surface:       #ffffff;   /* paneler/kort */
+  --surface-2:     #f0f2f7;   /* svak panelkontrast */
+  --text:          #0f172a;   /* hovedtekst (slate-900) */
+  --muted:         #475569;   /* sekundærtekst (slate-600) */
+
+  /* Primær/aksent (mild) */
+  --primary:       #4f86e5;   /* dempet blå */
+  --primary-600:   #3f6ec1;
+  --primary-700:   #31559a;
+
+  /* Overskriftsfarger (h1–h6) – bevisst milde, men tydelige */
+  --h1: #3b82f6;   /* blå */
+  --h2: #6366f1;   /* indigo */
+  --h3: #10b981;   /* grønn */
+  --h4: #f59e0b;   /* rav/amber */
+  --h5: #ec4899;   /* rosa */
+  --h6: #14b8a6;   /* teal */
+
+  /* Statusfarger */
+  --info:    #2563eb;
+  --success: #16a34a;
+  --warn:    #d97706;
+  --error:   #dc2626;
+
+  /* Kode-palett (mild) */
+  --code-bg:         #0b1220;  /* mørk bakgrunn for kontrast (lys modus) */
+  --code-text:       #e5e7eb;
+  --code-border:     #1f2937;
+  --inline-code-bg:  #e7edf9;
+  --inline-code-tx:  #0f172a;
+
+  /* Rammer/linjer */
+  --border:    #d6d9e0;
+
+  /* Fokus */
+  --focus-ring: rgba(79, 134, 229, 0.6);
+
+  /* Typografi og rutenett */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+               Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji",
+               "Segoe UI Emoji";
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+               "Courier New", monospace;
+
+  --radius-s:  6px;
+  --radius-m:  10px;
+  --radius-l:  14px;
+
+  --shadow-1:  0 1px 2px rgba(0,0,0,0.06), 0 1px 1px rgba(0,0,0,0.04);
+  --shadow-2:  0 6px 18px rgba(0,0,0,0.08);
+
+  /* Typografi-skala */
+  --fs-300: 0.875rem; /* 14px */
+  --fs-400: 1rem;     /* 16px */
+  --fs-500: 1.125rem; /* 18px */
+  --fs-600: 1.25rem;  /* 20px */
+  --fs-700: 1.5rem;   /* 24px */
+  --fs-800: 1.875rem; /* 30px */
+  --fs-900: 2.25rem;  /* 36px */
+
+  /* Avstandsskala */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+
+  /* Maksbredde */
+  --container: 72rem; /* 1152px */
+}
+
+/* Dark mode – automatisk hvis bruker foretrekker det */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:            #0b1220;
+    --surface:       #111827;
+    --surface-2:     #0f172a;
+    --text:          #e5e7eb;
+    --muted:         #a1a7b3;
+
+    --primary:       #7aa5ff;
+    --primary-600:   #5f86e2;
+    --primary-700:   #4a69b8;
+
+    --h1: #8ab4ff;
+    --h2: #a5b4fc;
+    --h3: #34d399;
+    --h4: #fbbf24;
+    --h5: #f472b6;
+    --h6: #2dd4bf;
+
+    --border:        #273143;
+
+    --code-bg:       #0a0f1a;
+    --code-text:     #e3e7ef;
+    --code-border:   #1e2838;
+    --inline-code-bg:#19253a;
+    --inline-code-tx:#e3e7ef;
+
+    --focus-ring: rgba(138, 180, 255, 0.6);
+  }
+}
+
+/* --------------------------
+   1) Reset og base
+   -------------------------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-400);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, svg, video, canvas, audio, iframe, embed, object {
+  display: block;
+  max-width: 100%;
+}
+
+img { height: auto; }
+
+blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
+  margin: 0;
+}
+
+p + p { margin-top: var(--space-4); }
+
+:focus:not(:focus-visible) { outline: none; }
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+  border-radius: var(--radius-s);
+}
+
+/* --------------------------
+   2) Typografi
+   -------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: var(--space-6) 0 var(--space-3);
+}
+
+h1 { font-size: var(--fs-900); color: var(--h1); }
+h2 { font-size: var(--fs-800); color: var(--h2); }
+h3 { font-size: var(--fs-700); color: var(--h3); }
+h4 { font-size: var(--fs-600); color: var(--h4); }
+h5 { font-size: var(--fs-500); color: var(--h5); }
+h6 { font-size: var(--fs-400); color: var(--h6); text-transform: uppercase; letter-spacing: 0.04em; }
+
+p, li { color: var(--text); }
+.muted { color: var(--muted); }
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: var(--space-8) 0;
+}
+
+/* Liste og tabeller */
+ul, ol { padding-left: 1.4rem; margin: var(--space-4) 0; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-6) 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-m);
+  overflow: hidden;
+}
+th, td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+thead th {
+  background: var(--surface-2);
+  text-align: left;
+  font-weight: 600;
+}
+
+/* --------------------------
+   3) Layout-hjelpere
+   -------------------------- */
+.container {
+  width: min(100% - 2rem, var(--container));
+  margin-inline: auto;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-m);
+  box-shadow: var(--shadow-1);
+  padding: var(--space-6);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-6);
+}
+.grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+@media (max-width: 768px) {
+  .grid.cols-2, .grid.cols-3 { grid-template-columns: 1fr; }
+}
+
+.flex { display: flex; gap: var(--space-4); align-items: center; }
+.flex-col { flex-direction: column; }
+
+/* Utility spacing */
+.mt-0 { margin-top: 0; }
+.mt-2 { margin-top: var(--space-2); }
+.mt-4 { margin-top: var(--space-4); }
+.mt-6 { margin-top: var(--space-6); }
+.mb-0 { margin-bottom: 0; }
+.mb-2 { margin-bottom: var(--space-2); }
+.mb-4 { margin-bottom: var(--space-4); }
+.mb-6 { margin-bottom: var(--space-6); }
+.p-0  { padding: 0; }
+.p-2  { padding: var(--space-2); }
+.p-4  { padding: var(--space-4); }
+.p-6  { padding: var(--space-6); }
+
+/* Skjule visuelt, men bevare for skjermleser */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden; clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap; clip-path: inset(50%);
+  border: 0; padding: 0; margin: -1px;
+}
+
+/* --------------------------
+   4) Knapper og merkelapper
+   -------------------------- */
+.btn {
+  appearance: none;
+  border: 1px solid var(--primary);
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--radius-s);
+  cursor: pointer;
+  box-shadow: var(--shadow-1);
+  transition: background .15s ease, transform .05s ease;
+}
+.btn:hover { background: var(--primary-600); }
+.btn:active { transform: translateY(1px); }
+.btn.ghost {
+  background: transparent;
+  color: var(--primary);
+  border-color: var(--primary);
+}
+.btn.ghost:hover {
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+}
+
+.badge {
+  display: inline-block;
+  font-size: var(--fs-300);
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+.badge.success { background: color-mix(in srgb, var(--success) 12%, var(--surface)); color: #0f5132; }
+.badge.warn    { background: color-mix(in srgb, var(--warn) 12%, var(--surface));    color: #663c00; }
+.badge.error   { background: color-mix(in srgb, var(--error) 12%, var(--surface));   color: #5f1b1b; }
+
+/* --------------------------
+   5) Skjemaelementer
+   -------------------------- */
+input, select, textarea {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-s);
+}
+label { font-weight: 600; display: inline-block; margin-bottom: 0.4rem; }
+fieldset { border: 1px dashed var(--border); border-radius: var(--radius-s); padding: var(--space-4); }
+legend { padding: 0 0.5rem; }
+
+/* --------------------------
+   6) Kode og JS-demonstrasjoner
+   -------------------------- */
+
+/* Inline-kode */
+code {
+  font-family: var(--font-mono);
+  font-size: 0.95em;
+}
+p code, li code, h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
+  background: var(--inline-code-bg);
+  color: var(--inline-code-tx);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  border: 1px solid color-mix(in srgb, var(--inline-code-tx) 10%, transparent);
+}
+
+/* Blokkerte kodeområder */
+pre {
+  background: var(--code-bg);
+  color: var(--code-text);
+  border: 1px solid var(--code-border);
+  border-radius: var(--radius-m);
+  padding: 1rem 1.2rem;
+  overflow: auto;
+  box-shadow: var(--shadow-1);
+}
+pre code {
+  background: transparent;
+  color: inherit;
+  border: 0;
+  padding: 0;
+  display: block;
+  line-height: 1.5;
+}
+
+/* Ramme rundt kode med tittel og kopi-knapp (valgfritt å bruke i HTML) */
+.code-block {
+  margin: var(--space-6) 0;
+  border-radius: var(--radius-m);
+  overflow: hidden;
+  box-shadow: var(--shadow-1);
+  border: 1px solid var(--code-border);
+}
+.code-block .code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: 0.5rem 0.75rem;
+  background: color-mix(in srgb, var(--code-bg) 80%, var(--surface));
+  color: var(--code-text);
+  font-family: var(--font-mono);
+  font-size: var(--fs-300);
+}
+.code-block .code-header .lang {
+  opacity: 0.8;
+}
+.code-block .copy-btn {
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 75%, transparent);
+  color: var(--text);
+  font-size: var(--fs-300);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-s);
+  cursor: pointer;
+}
+.code-block .copy-btn:hover {
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
+}
+.code-block pre {
+  margin: 0;
+  border: 0;
+  border-top: 1px solid var(--code-border);
+  border-radius: 0 0 var(--radius-m) var(--radius-m);
+}
+
+/* Enkel (valgfri) syntaksfargelegging – kompatibel med f.eks. Prism klassenavn */
+.token.comment, .hljs-comment { color: #94a3b8; font-style: italic; }
+.token.keyword, .hljs-keyword { color: #93c5fd; }
+.token.string,  .hljs-string  { color: #86efac; }
+.token.number,  .hljs-number  { color: #fca5a5; }
+.token.function,.hljs-function{ color: #c7d2fe; }
+.token.operator,.hljs-operator{ color: #fcd34d; }
+
+/* Demo-paneler (for JS interaksjon) */
+.demo-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-m);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-1);
+}
+.demo-panel .controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+.demo-panel .output {
+  background: var(--surface-2);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-s);
+  padding: var(--space-4);
+  min-height: 3.5rem;
+}
+
+/* “Konsoll” for logging under øvelser */
+.console {
+  background: #0d1117;          /* GitHub‑aktig mørk */
+  color: #e6edf3;
+  border: 1px solid #1f242d;
+  border-radius: var(--radius-m);
+  padding: 0.75rem 1rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-300);
+  line-height: 1.5;
+  overflow: auto;
+}
+.console .log    { color: #e6edf3; }
+.console .info   { color: #93c5fd; }
+.console .warn   { color: #fbbf24; }
+.console .error  { color: #fca5a5; }
+.console .time   { opacity: 0.65; margin-right: 0.5rem; }
+
+/* KBD-taster i instruksjoner */
+.kbd {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  padding: 0.1rem 0.35rem;
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background: var(--surface);
+}
+
+/* Merkede linjer i kode (til forklaring i undervisning) */
+.mark-line {
+  display: block;
+  margin: 0 -1.2rem;
+  padding: 0 1.2rem;
+  background: rgba(255, 255, 0, 0.08);
+  border-left: 3px solid #facc15;
+}
+
+/* Linjenummer (om du genererer med JS) */
+pre.line-numbers {
+  counter-reset: line;
+}
+pre.line-numbers code {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+}
+pre.line-numbers code > span {
+  display: contents;
+}
+pre.line-numbers code > span::before {
+  counter-increment: line;
+  content: counter(line);
+  color: #94a3b8;
+  text-align: right;
+  width: 2ch;
+}
+
+/* --------------------------
+   7) Callouts / merknader
+   -------------------------- */
+.note, .info, .warning, .success, .error {
+  padding: var(--space-4);
+  border-radius: var(--radius-m);
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+.note    { border-left: 4px solid var(--primary); }
+.info    { border-left: 4px solid var(--info); }
+.success { border-left: 4px solid var(--success); }
+.warning { border-left: 4px solid var(--warn); }
+.error   { border-left: 4px solid var(--error); }
+
+/* --------------------------
+   8) Små animasjoner/hjelp
+   -------------------------- */
+.fade-in {
+  animation: fade-in 180ms ease-out both;
+}
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* --------------------------
+   9) Printer-vennlig
+   -------------------------- */
+@media print {
+  .btn, .controls, .copy-btn { display: none !important; }
+  body { background: white; color: black; }
+  .card, .demo-panel, .code-block, pre { box-shadow: none; }
+}
+``

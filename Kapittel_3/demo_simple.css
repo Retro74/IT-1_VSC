@@ -1,0 +1,76 @@
+/* demo-simple.css – Enkel stil for JS-demonstrasjoner */
+
+/* Grunnleggende */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f7f8fb; /* dus bakgrunn */
+  color: #333;
+  line-height: 1.6;
+  padding: 1rem;
+}
+
+/* Overskrifter */
+h1 { color: #3b82f6; font-size: 2rem; }
+h2 { color: #6366f1; font-size: 1.75rem; }
+h3 { color: #10b981; font-size: 1.5rem; }
+h4 { color: #f59e0b; font-size: 1.25rem; }
+h5 { color: #ec4899; font-size: 1.1rem; }
+h6 { color: #14b8a6; font-size: 1rem; text-transform: uppercase; }
+
+/* Lenker */
+a { color: #4f86e5; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Kode */
+code {
+  font-family: monospace;
+  background: #e7edf9;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+pre {
+  background: #0b1220;
+  color: #06132d;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+code, pre {
+  display: block;
+  font-family: monospace;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+/* Demo-panel */
+.demo-panel {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+.output {
+  background: #f0f2f7;
+  border: 2px dashed #ccc;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  font-family: monospace;
+}
+
+/* Knapper */
+.btn {
+  background: #4f86e5;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn:hover {
+  background: #3f6ec1;
+}

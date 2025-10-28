@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="no">
+    <head>
+    <title>
+        Demo av if, else, else if
+    </title>
+    </title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="demo_simple.css">
+    <script>
+        var alder = 18
+    </script>
+    </head>
+    <body>
+        <h1>Demo av If, Else, Else If</h1>
+        <p class="demo-panel">
+            Endre "alder" i scriptblokken, og se hvordan utskriften endres 
+        </p>
+        <p class="output">
+        <script>
+            document.write("Alder er satt til " + alder + "<br>")            
+            if (alder >= 18){
+                document.write("Du er myndig")
+            } 
+            else if(alder == 17){
+                document.write("Du er snart myndig")
+            }
+            else{
+                document.write("Du er ikke myndig før om " + (18 -alder) + " år")
+            }
+        </script>
+
+        </p>
+        
+        <hr>
+        <a href="index.html">Tilbake</a>
+
+    </body>
+</html>
