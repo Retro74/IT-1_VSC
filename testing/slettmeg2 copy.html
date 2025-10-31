@@ -5,20 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vertikal Gradient med 3 farger</title>
   <style>
+    .viktig {
+    color: red;
+    font-weight: bold;
+    text-transform: uppercase;
+}
   </style>
 </head>
 <body>
+  <h1 id="id_h1_hedline">her</h1>
 
-<form action="mottak.php" method="post">
-  Fullt navn: <input type="text" required minlength="5"><br>
-  email:<input type="email" required><br>
+Skriv inn en overskrift: <input id="skriveboks" type="text" oninput="id_h1_hedline.innerHTML=skriveboks.value"><br>
+  email:
+<input id="id_email" type="email" required value="roegr@roger.com"><br>
   alder:<input type="number" min="18"><br>
-  <button type="submit">Send</button>
+  <button onclick="alert('au')">Send</button>
+<input id="id_email" type="email" required value="roegr@roger.com">
 
+<h2 id="jobbListe">Jobb og karriere</h2>
+<ul id="jobbPunkter">
+  <li onclick="id_li1.style.color=='red'?id_li1.style.color='black':id_li1.style.color='red'" id="id_li1">Fokus</li>
+  <li onclick="id_li2.style.color=='red'?id_li2.style.color='black':id_li2.style.color='red'" id="id_li2">Læring</li>
+  <li onclick="id_li3.style.color=='red'?id_li3.style.color='black':id_li3.style.color='red'" id="id_li3">Mot</li>
+  <li onclick="id_li4.style.color=='red'?id_li4.style.color='black':id_li4.style.color='red'" id="id_li4">Tid</li>
+  <li onclick="id_li5.style.color=='red'?id_li5.style.color='black':id_li5.style.color='red'" id="id_li5">Kaffe</li>
+</ul>
 
-
-
-</form>
+<h2 id="livListe">Livet generelt</h2>
+<ul id="livPunkter">
+  <li onclick="id_li6.style.color=='red'?id_li6.style.color='black':id_li6.style.color='red'"  id="id_li6">Venner</li>
+  <li onclick="id_li7.style.color=='red'?id_li7.style.color='black':id_li7.style.color='red'"  id="id_li7">Søvn</li>
+  <li onclick="id_li8.style.color=='red'?id_li8.style.color='black':id_li8.style.color='red'"  id="id_li8">Humor</li>
+  <li onclick="id_li9.style.color=='red'?id_li9.style.color='black':id_li9.style.color='red'"  id="id_li9">Bevegelse</li>
+  <li onclick="id_li10.style.color=='red'?id_li10.style.color='black':id_li10.style.color='red'" id="id_li10">Tålmodighet</li>
+</ul>
 
 </body>
 </html>
+<script>
+  id_h1_hedline.innerHTML="Roger"
+  id_h1_hedline.style.color="red"
+
+</script>

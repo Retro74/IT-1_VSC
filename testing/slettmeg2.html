@@ -3,28 +3,137 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vertikal Gradient med 3 farger</title>
+  <title>Kalkulator</title>
   <style>
+    * body html{ margin: 0px;
+      padding: 0px;}
     body {
-      margin: 0;
-      height: 100vh;
+      background: #eef1f4;
+      font-family: system-ui, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: Arial, sans-serif;
-      color: white;
-      font-size: 2rem;
+      height: 100vh;
+    }
 
-      /* Vertikal gradient: gul → rød → sort */
-      background: linear-gradient(to bottom,
-        #FFD700 0%,   /* gul */
-        #FF0000 50%,  /* rød */
-        #000000 100%  /* sort */
-      );
+    .kalkulator {
+      background: white;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      width: 280px;
+    }
+
+    .display {
+      background: #f5f7fa;
+      border: none;
+      width: 93%;
+      height: 60px;
+      font-size: 2rem;
+      text-align: right;
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .knapper {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    button {
+      height: 60px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      background-color: #dce3eb;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #c9d6e3;
+    }
+
+    button:active {
+      transform: scale(0.97);
+    }
+
+    .operator {
+      background-color: #89a7e0;
+      color: white;
+      font-weight: bold;
+    }
+
+    .operator:hover {
+      background-color: #6b8fd0;
+    }
+
+    .lik {
+      background-color: #58b368;
+      color: white;
+      font-weight: bold;
+      grid-column: span 2;
+    }
+
+    .lik:hover {
+      background-color: #4ba25d;
     }
   </style>
 </head>
 <body>
-  Gul → Rød → Sort
+  <div class="kalkulator">
+    <input type="text" id="display" class="display" disabled />
+
+    <div class="knapper">
+      <button onclick="clearDisplay()">C</button>
+      <button onclick="deleteLast()">⌫</button>
+      <button onclick="appendValue('%')">%</button>
+      <button class="operator" onclick="appendValue('/')">÷</button>
+
+      <button onclick="appendValue('7')">7</button>
+      <button onclick="appendValue('8')">8</button>
+      <button onclick="appendValue('9')">9</button>
+      <button class="operator" onclick="appendValue('*')">×</button>
+
+      <button onclick="appendValue('4')">4</button>
+      <button onclick="appendValue('5')">5</button>
+      <button onclick="appendValue('6')">6</button>
+      <button class="operator" onclick="appendValue('-')">−</button>
+
+      <button onclick="appendValue('1')">1</button>
+      <button onclick="appendValue('2')">2</button>
+      <button onclick="appendValue('3')">3</button>
+      <button class="operator" onclick="appendValue('+')">+</button>
+
+      <button onclick="appendValue('0')">0</button>
+      <button onclick="appendValue('.')">.</button>
+      <button class="lik" onclick="calculate()">=</button>
+    </div>
+  </div>
+
+  <script>
+    const display = document.getElementById('display');
+
+    function appendValue(value) {
+      display.value += value;
+    }
+
+    function clearDisplay() {
+      display.value = '';
+    }
+
+    function deleteLast() {
+      display.value = display.value.slice(0, -1);
+    }
+
+    function calculate() {
+      try {
+        display.value = eval(display.value);
+      } catch {
+        display.value = 'Feil';
+      }
+    }
+  </script>
 </body>
 </html>

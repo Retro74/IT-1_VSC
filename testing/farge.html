@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gradient-fargevelger</title>
+<style>
+  body {
+    text-align: center;
+  }
+
+</style>
+</head>
+<body>
+
+<h1>Velg gradientfarger</h1>
+
+<div>
+  <label for="farge1">Farge 1:</label>
+  <input  oninput="oppdaterGradient()" type="color" id="farge1" value="#ff0000">
+</div>
+<div>
+  <label for="farge2">Farge 2:</label>
+  <input oninput="oppdaterGradient()" type="color" id="farge2" value="#0000ff">
+</div>
+
+<script>
+  document.getElementById('farge2');
+
+  function oppdaterGradient() {
+    document.body.style.background = `linear-gradient(to right, ${farge1.value}, ${farge2.value})`;
+  }
+
+
+ oppdaterGradient()
+</script>
+
+</body>
+</html>
