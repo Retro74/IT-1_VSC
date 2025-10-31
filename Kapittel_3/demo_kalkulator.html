@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="no">
+    <head>
+    <title>
+        Demo av Kalkulator
+    </title>
+    </title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="kalkulator.css">
+
+    </head>
+    <body>
+
+        <div class="kalkulator">
+            <input type="text" id="display" class="display" disabled>
+            <div class="knapper">
+
+                <button onclick="opphoyAndre()">x^2</button>
+                <button onclick="trigFunk('sin')">sin()</button>
+                <button onclick="trigFunk('cos')">cos()</button>
+                <button onclick="trigFunk('tan')">tan()</button>
+
+                <button onclick="fjernAlt()">C</button>
+                <button onclick="fjernEttTegn()">&lt;</button>
+                <button onclick="leggTilVerdi('%')">%</button>
+                <button onclick="leggTilVerdi(Math.PI)">π</button>
+
+                <button onclick="leggTilVerdi(7)">7</button>
+                <button onclick="leggTilVerdi(8)">8</button>
+                <button onclick="leggTilVerdi(9)">9</button>
+                <button class="operator" onclick="leggTilVerdi('+')">+</button>
+                
+                <button onclick="leggTilVerdi(4)">4</button>
+                <button onclick="leggTilVerdi(5)">5</button>
+                <button onclick="leggTilVerdi(6)">6</button>
+                <button class="operator" onclick="leggTilVerdi('-')">-</button>
+
+                <button onclick="leggTilVerdi(1)">1</button>
+                <button onclick="leggTilVerdi(2)">2</button>
+                <button onclick="leggTilVerdi(3)">3</button>
+                <button class="operator" onclick="leggTilVerdi('*')">*</button>
+
+                <button onclick="leggTilVerdi(0)">0</button>
+                <button onclick="leggTilVerdi('.')">,</button>
+                <button class="lik" onclick="regnUt()">=</button>
+                <button class="operator" onclick="leggTilVerdi('/')">/</button>
+            </div>
+        </div>
+        <script>
+            function opphoyAndre(){
+                display.value= eval(display.value+ "**2")
+            }
+            function trigFunk(navnPaaFunk){
+                if (navnPaaFunk== "sin"){display.value=Math.round(Math.sin(eval(display.value)*(Math.PI / 180))*1000000)/1000000}
+                if (navnPaaFunk== "cos"){display.value=Math.round(Math.cos(eval(display.value)*(Math.PI / 180))*1000000)/1000000}
+                if (navnPaaFunk== "tan"){display.value=Math.round(Math.tan(eval(display.value)*(Math.PI / 180))*1000000)/1000000}
+                
+            }
+            function leggTilVerdi(verdi){
+                display.value += verdi
+            }
+            function regnUt(){
+                if (display.value!="") {
+                    display.value = eval(display.value)
+                }
+            }
+            function fjernAlt(){
+                display.value =""
+            }
+            function fjernEttTegn(){
+                display.value = display.value.slice(0,-1)
+            }
+        
+        //Håndter uønskede muligheter.
+        //
+        // Utvide med Math.sin(), Math.cos(), Opphøyde i 2., Opphøyd i n-te, M+ , MR, inverse funksjoner
+        //
+        // 
+        </script>
+
+
+        
+
+    </body>
+</html>
